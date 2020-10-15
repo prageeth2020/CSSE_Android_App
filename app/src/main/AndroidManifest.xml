@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PurchasingProcess3"></activity>
+        <activity android:name=".EnquiryHandlingProcess3"></activity>
+        <activity android:name=".EnquiryHandlingProcess2" />
+        <activity android:name=".EnquiryHandlingProcess1" />
+        <activity android:name=".PurchasingProcess3" />
         <activity android:name=".PurchasingProcess1" />
         <activity android:name=".DeliveryProcess6" />
         <activity android:name=".DeliveryProcess5" />
