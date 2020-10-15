@@ -422,7 +422,7 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_bright"
+            android:background="@drawable/button_blue"
             android:text="Create Receipt"
             android:textColor="@android:color/background_dark"
             android:textStyle="bold" />

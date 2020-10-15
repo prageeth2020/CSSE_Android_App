@@ -433,7 +433,7 @@
             android:layout_width="248dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/holo_blue_bright"
+            android:background="@drawable/button_blue"
             android:text="Create Invoice"
             android:textColor="@android:color/background_dark" />
 

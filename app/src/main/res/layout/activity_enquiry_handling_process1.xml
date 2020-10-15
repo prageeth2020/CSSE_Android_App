@@ -105,8 +105,8 @@
             android:id="@+id/button6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_bright"
-            android:text="Inquir"
+            android:background="@drawable/button_blue"
+            android:text="Inquire"
             android:textColor="@android:color/background_dark"
             android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
             android:id="@+id/button7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_green_light"
+            android:background="@drawable/button_green"
             android:text="View Inquiries"
             android:textColor="@android:color/background_dark"
             android:textStyle="bold" />
