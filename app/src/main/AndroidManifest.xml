@@ -9,17 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EnquiryHandlingProcess3"></activity>
-        <activity android:name=".EnquiryHandlingProcess2" />
+        <activity android:name=".DashboardSupplier"></activity>
+        <activity android:name=".DashboardManager" />
+        <activity android:name=".PurchaseProcess2" />
         <activity android:name=".EnquiryHandlingProcess1" />
+        <activity android:name=".EnquiryHandlingProcess3" />
+        <activity android:name=".EnquiryHandlingProcess2" />
         <activity android:name=".PurchasingProcess3" />
         <activity android:name=".PurchasingProcess1" />
         <activity android:name=".DeliveryProcess6" />
         <activity android:name=".DeliveryProcess5" />
         <activity android:name=".DeliveryProcess4" />
         <activity android:name=".DeliveryProcess2" />
+        <activity android:name=".register" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

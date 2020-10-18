@@ -11,39 +11,40 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class DeliveryProcess4 extends AppCompatActivity {
+public class PurchaseProcess2 extends AppCompatActivity {
     DataBaseHelper myDb;
 
-    EditText ReceiptNo,  OrderReferenceNo , Supplier, DeliveryAddress , ItemNo;
+    EditText orderReferenceNo,  deliverBefore , supplierCompany, itemNo;
+
     Button submit,viewInquire,next,textView7,textView6,textView8,view2,view1,update,delete;
+
     String a, b, c, d ,e, f,g,h,i,j;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delivery_process4);
+        setContentView(R.layout.activity_purchase_process2);
 
         myDb = new DataBaseHelper(this);
 
-        ReceiptNo = (EditText) findViewById(R.id.editTextTextPersonName2);
-        OrderReferenceNo = (EditText) findViewById(R.id.editTextTextPersonName3);
-        Supplier = (EditText) findViewById(R.id.editTextTextPersonName4);
-        DeliveryAddress = (EditText) findViewById(R.id.editTextTextPersonName5);
-        ItemNo = (EditText) findViewById(R.id.editTextTextPersonName6);
+        orderReferenceNo = (EditText) findViewById(R.id.editTextTextPersonName2);
+        deliverBefore = (EditText) findViewById(R.id.editTextTextPersonName3);
+        supplierCompany = (EditText) findViewById(R.id.editTextTextPersonName4);
+        itemNo = (EditText) findViewById(R.id.editTextTextPersonName5);
 
-        submit = (Button) findViewById(R.id.button4);
-        view1 = (Button) findViewById(R.id.button17);
-        view2 = (Button) findViewById(R.id.button27);
+        submit = (Button) findViewById(R.id.button5);
 
-        AddReceipt();
+        view1 = (Button) findViewById(R.id.button15);
+        view2 = (Button) findViewById(R.id.button28);
+
+        AddOrder();
 
         viewAll();
-        viewReceipt();
 
+        viewOrder();
     }
 
-
-    public void AddReceipt() {
+    public void AddOrder() {
 
         submit.setOnClickListener(
 
@@ -51,34 +52,32 @@ public class DeliveryProcess4 extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        if (view.getId() == R.id.button4) {
+                        if (view.getId() == R.id.button5) {
 
-                            a = ReceiptNo.getText().toString().trim();
-                            b = OrderReferenceNo.getText().toString().trim();
-                            c = Supplier.getText().toString().trim();
-                            d = DeliveryAddress.getText().toString().trim();
-                            e = ItemNo.getText().toString().trim();
+                            a = orderReferenceNo.getText().toString().trim();
+                            b = deliverBefore.getText().toString().trim();
+                            c = supplierCompany.getText().toString().trim();
+                            d = itemNo.getText().toString().trim();
 
-                            if (a.equals("") || b.equals("") || c.equals("") || d.equals("") || e.equals("")) {
+                            if (a.equals("") || b.equals("") || c.equals("") || d.equals("")) {
 
-                                Toast.makeText(DeliveryProcess4.this, "Data field can not be empty", Toast.LENGTH_LONG).show();
+                                Toast.makeText(PurchaseProcess2.this, "Data field can not be empty", Toast.LENGTH_LONG).show();
 
                                 return;
                             } else {
-                                boolean inserted = myDb.insertDataCreateReceipt(ReceiptNo.getText().toString(),
-                                        OrderReferenceNo.getText().toString(),
-                                        Supplier.getText().toString(),
-                                        DeliveryAddress.getText().toString(),
-                                        ItemNo.getText().toString()
+                                boolean inserted = myDb.insertDataPurchaseOrder(orderReferenceNo.getText().toString(),
+                                        deliverBefore.getText().toString(),
+                                        supplierCompany.getText().toString(),
+                                        itemNo.getText().toString()
                                 );
 
                                 if (inserted == true) {
-                                    Toast.makeText(DeliveryProcess4.this, "Data inserted", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(DeliveryProcess4.this, DeliveryProcess4.class);
+                                    Toast.makeText(PurchaseProcess2.this, "Data inserted", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(PurchaseProcess2.this, PurchaseProcess2.class);
                                     startActivity(intent);
                                 } else {
 
-                                    Toast.makeText(DeliveryProcess4.this, "Data not inserted", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(PurchaseProcess2.this, "Data not inserted", Toast.LENGTH_LONG).show();
 
 
                                 }
@@ -129,7 +128,8 @@ public class DeliveryProcess4 extends AppCompatActivity {
         );
     }
 
-    public void  viewReceipt(){
+
+    public void  viewOrder(){
 
         view2.setOnClickListener(
 
@@ -137,7 +137,7 @@ public class DeliveryProcess4 extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Cursor res = myDb.getAllDataReceipt();
+                        Cursor res = myDb.getAllData();
 
                         if(res.getCount() == 0){
 
@@ -148,17 +148,14 @@ public class DeliveryProcess4 extends AppCompatActivity {
                         StringBuffer buffer =new StringBuffer();
 
                         while(res.moveToNext()){
-
-
-                            buffer.append("ReceiptNo :"+res.getString(0)+"\n");
-                            buffer.append("OrderReferenceNo :"+res.getString(1)+"\n");
-                            buffer.append("Supplier :"+res.getString(2)+"\n");
-                            buffer.append("DeliveryAddress :"+res.getString(3)+"\n");
-                            buffer.append("ItemNo :"+res.getString(4)+"\n");
+                            buffer.append("OrderReferenceNo :"+res.getString(0)+"\n");
+                            buffer.append("DeliverBefore :"+res.getString(1)+"\n");
+                            buffer.append("SupplierCompany :"+res.getString(2)+"\n");
+                            buffer.append("ItemNo :"+res.getString(3)+"\n");
 
 
                         }
-                        showMessage("Purchase Details",buffer.toString());
+                        showMessage("Order Details",buffer.toString());
 
                     }
                 }
@@ -173,4 +170,5 @@ public class DeliveryProcess4 extends AppCompatActivity {
         builder.setMessage(Message);
         builder.show();
     }
+
 }
